@@ -6,9 +6,10 @@ Produced for the Jug Summer Camp conference
 
 ## Products
 - [App Engine][1]
+- [Cloud Storage][2]
 
-## Language
-- [Java][2]
+## Languages
+- Java
 - Javascript
 
 ## APIs
@@ -28,7 +29,7 @@ Produced for the Jug Summer Camp conference
 
 
 [1]: https://developers.google.com/appengine
-[2]: http://java.com/en/
+[2]: https://developers.google.com/storage/
 [3]: https://developers.google.com/appengine/docs/java/endpoints/
 [4]: https://developers.google.com/appengine/docs/java/tools/maven
 [5]: https://localhost:8080/
