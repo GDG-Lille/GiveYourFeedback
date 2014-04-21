@@ -3,6 +3,8 @@ hotspot.log
 *.ipr
 *.iws
 target/
+node
+node_modules
 classes/
 /var
 test-output/
@@ -12,7 +14,11 @@ test-output/
 .classpath
 .settings
 .project
+.tmp
+.merge_file*
+.sass-cache
 temp-testng-customsuite.xml
 test-output
+src/main/webapp/dist
 .externalToolBuilders
 *~
