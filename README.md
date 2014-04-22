@@ -1,7 +1,7 @@
 Give Your Feedback
 =============================================
 
-A "hello world" application for Google Cloud Endpoints in Java.
+An application for Google Cloud Endpoints in Java.
 Produced for the Jug Summer Camp conference
 
 ## Products
