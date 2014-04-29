@@ -2,7 +2,6 @@ Give Your Feedback
 =============================================
 
 An application for Google Cloud Endpoints in Java
-Produced for the Jug Summer Camp conference
 
 ## Products
 - [App Engine][1]
