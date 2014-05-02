@@ -15,7 +15,7 @@
         <init-param>
             <param-name>services</param-name>
             <param-value>com.gdg.france.giveyourfeedback.api.ConferenceApi,
-                com.gdg.parisgiveyourfeedbackg.api.SessionApi</param-value>
+                com.gdg.france.giveyourfeedback.api.SessionApi</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

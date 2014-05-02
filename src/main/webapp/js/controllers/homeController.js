@@ -19,11 +19,13 @@ feedbackApp.controller("mainController" ,function ($scope, $window, UserService)
         }
     };
 
-    $scope.userAuthed = function() {
+    $scope.userAuthed = function(firstResp) {
+        UserService.setToken(firstResp.access_token);
         gapi.client.oauth2.userinfo.get().execute(function(resp) {
             console.log(resp);
             if (!resp.code) {
                 UserService.setUser(resp);
+
                 $scope.loginAction = resp.name;
                 $scope.profileUrl = resp.link;
                 $scope.profilePictureUrl = resp.picture;
@@ -53,6 +55,11 @@ feedbackApp.controller("mainController" ,function ($scope, $window, UserService)
         gapi.client.load('giveyourfeedback', 'v2', function(){
             $scope.backendReady = true;
         }, apiRoot);
+
+        // Use the API Loader script to load the google.picker script.
+        gapi.load('picker', {'callback': function(){
+            console.log("picker loaded");
+        }});
 
         gapi.client.load('oauth2', 'v2', function(){
             console.log("signin ready");

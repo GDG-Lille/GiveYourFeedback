@@ -3,7 +3,7 @@
 /**
  * Controller of the conference page
  */
-feedbackApp.controller("importController", function ($scope, $http, ConferenceService) {
+feedbackApp.controller("importController", function ($scope, $http, ConferenceService, UserService) {
     gapi.load('picker', {'callback': $scope.createPicker});
 
     $scope.conference = {};
@@ -73,6 +73,7 @@ feedbackApp.controller("importController", function ($scope, $http, ConferenceSe
         var picker = new google.picker.PickerBuilder()
             .setAppId('give-your-feedback')
             .addView(spreadSheetView)
+            .setOAuthToken(UserService.getToken())
             .setDeveloperKey('AIzaSyDSqZ_0qvYoL5q9CFho_gV4fYQ5Fx_6P0U')
             .setCallback($scope.pickerCallback)
             .build();

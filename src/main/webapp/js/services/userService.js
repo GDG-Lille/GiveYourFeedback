@@ -16,6 +16,12 @@ feedbackApp.service("UserService", function () {
         getUser : function() {
             return currentUser;
         },
+        setToken : function(token) {
+            currentToken = token;
+        },
+        getToken : function() {
+            return currentToken;
+        },
         isLogged: function() {
             return currentUser;
         }
