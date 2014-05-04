@@ -11,7 +11,7 @@ feedbackApp.service("ConferenceService", function ($http) {
             return $http.get(CURRENT_ROOT);
         },
         insertConference: function(conference) {
-            return gapi.client.feedbackyourjug.conferences.insert(conference);
+            return gapi.client.giveyourfeedback.conferences.insert(conference);
         }
     };
 });

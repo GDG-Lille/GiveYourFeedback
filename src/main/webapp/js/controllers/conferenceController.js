@@ -13,8 +13,7 @@ feedbackApp.controller("conferenceController", function ($scope, $routeParams, $
             $scope.sessions = sessionsCache.sessions;
             $scope.locations = sessionsCache.locations;
             $scope.slots = sessionsCache.slots;
-            $scope.location1 = $scope.locations[1];
-            $scope.location2 = $scope.locations[0];
+            $scope.days = sessionsCache.days;
         } else {
             $('.alert-info').removeClass("hide");
             SessionService.getSessions($routeParams.idConference)
@@ -23,30 +22,43 @@ feedbackApp.controller("conferenceController", function ($scope, $routeParams, $
                     $scope.sessions = {};
                     $scope.locations = [];
                     $scope.slots = [];
+                    $scope.days = [];
                     for (var i = 0; i < resp.items.length; i++) {
                         var currentSession = resp.items[i];
                         currentSession.sessionUrl = currentSession.idConference.toString() + '/' + currentSession.id.toString();
-                        if (!$scope.sessions[currentSession.startTime]){
-                            $scope.sessions[currentSession.startTime] = {} ;
+
+                        var currentStartTime = currentSession.startTime;
+                        var currentLocation = currentSession.location;
+                        var currentDay = currentSession.day;
+
+                        if (!$scope.sessions[currentDay]){
+                            $scope.sessions[currentDay] = {} ;
                         }
-                        if (!$scope.sessions[currentSession.startTime][currentSession.location]){
-                            $scope.sessions[currentSession.startTime][currentSession.location] = {};
+                        if (!$scope.sessions[currentDay][currentStartTime]){
+                            $scope.sessions[currentDay][currentStartTime] = {} ;
                         }
-                        $scope.sessions[currentSession.startTime][currentSession.location] = currentSession;
-                        if ($scope.locations.indexOf(currentSession.location) == -1){
-                            $scope.locations.push(currentSession.location);
+                        if (!$scope.sessions[currentDay][currentStartTime][currentLocation]){
+                            $scope.sessions[currentDay][currentStartTime][currentLocation] = {};
                         }
-                        if ($scope.slots.indexOf(currentSession.startTime) == -1){
-                            $scope.slots.push(currentSession.startTime);
+                        $scope.sessions[currentDay][currentStartTime][currentLocation] = currentSession;
+
+                        if ($scope.locations.indexOf(currentLocation) == -1){
+                            $scope.locations.push(currentLocation);
+                        }
+                        if ($scope.slots.indexOf(currentStartTime) == -1){
+                            $scope.slots.push(currentStartTime);
+                        }
+                        if ($scope.days.indexOf(currentDay) == -1){
+                            $scope.days.push(currentDay);
                         }
                     }
+                    $scope.days.sort();
                     CacheService.setSessions($routeParams.idConference,{
                         sessions : $scope.sessions,
                         locations : $scope.locations,
-                        slots : $scope.slots
+                        slots : $scope.slots,
+                        days : $scope.days
                     });
-                    $scope.location1 = $scope.locations[1];
-                    $scope.location2 = $scope.locations[0];
                 })
         }
     } else {

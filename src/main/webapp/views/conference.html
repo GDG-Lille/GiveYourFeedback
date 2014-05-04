@@ -3,23 +3,25 @@
     <li><a href="#/conference">Conferences</a></li>
     <li class="active">Planning</li>
 </ol>
-<table class="table table-responsive">
-    <thead>
-        <tr>
-            <th>Time</th>
-            <th>{{ location1 }}</th>
-            <th>{{ location2 }}</th>
-            <!--<th ng-repeat="location in locations">{{location}}</th>-->
-        </tr>
-    </thead>
-    <tbody >
-        <tr ng-repeat="(slot, sessionLocation) in sessions">
-            <td>{{slot}}</td>
-            <td ng-repeat="(location, session) in sessionLocation">
-                <a class="label label-primary" ng-href="#/conference/{{ session.sessionUrl }}">
-                    {{ session.title }}
-                </a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div ng-repeat="currentDay in days">
+    <label class="alert alert-info">{{currentDay}}</label>
+
+    <table class="table table-responsive" >
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th ng-repeat="location in locations">{{location}}</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr ng-repeat="(slot, sessionLocation) in sessions[currentDay]">
+                <td>{{slot}}</td>
+                <td ng-repeat="(location, session) in sessionLocation">
+                    <a class="label label-primary" ng-href="#/conference/{{ session.sessionUrl }}">
+                        {{ session.title }}
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
