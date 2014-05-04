@@ -16,9 +16,9 @@
         <tbody >
             <tr ng-repeat="(slot, sessionLocation) in sessions[currentDay]">
                 <td>{{slot}}</td>
-                <td ng-repeat="(location, session) in sessionLocation">
-                    <a class="label label-primary" ng-href="#/conference/{{ session.sessionUrl }}">
-                        {{ session.title }}
+                <td ng-repeat="location in locations">
+                    <a class="label label-primary" ng-show="sessionLocation[location]" ng-href="#/conference/{{ sessionLocation[location].sessionUrl }}">
+                        {{ sessionLocation[location].title }}
                     </a>
                 </td>
             </tr>
