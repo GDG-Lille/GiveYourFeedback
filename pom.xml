@@ -10,7 +10,7 @@
     <artifactId>giveyourfeedback</artifactId>
 
     <properties>
-        <appengine.target.version>1.9.3</appengine.target.version>
+        <appengine.target.version>1.9.15</appengine.target.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -61,6 +61,22 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>15.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.restx</groupId>
+            <artifactId>restx-core</artifactId>
+            <version>0.33.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.restx</groupId>
+            <artifactId>restx-core-annotation-processor</artifactId>
+            <version>0.33.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.restx</groupId>
+            <artifactId>restx-server-jetty</artifactId>
+            <version>0.33.1</version>
         </dependency>
 
         <!-- Test Dependencies -->
